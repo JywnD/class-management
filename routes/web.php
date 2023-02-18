@@ -21,7 +21,23 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/form-teacher', 'FormTeacherController@index')->name('formTeacher');
+Route::prefix('form-teacher')->group(function () {
+    Route::get('/', 'FormTeacherController@index')->name('student-list');
+    Route::get('/create-student', 'FormTeacherController@createStudent')->name('create-student');
+    Route::post('/create-student', 'FormTeacherController@storeStudent')->name('store-student');
+    Route::delete('/student/{id}', 'FormTeacherController@deleteStudent')->name('delete-student');
+
+    Route::get('/teacher', 'FormTeacherController@indexSubTeacher')->name('teacher-list');
+    Route::get('/create-teacher', 'FormTeacherController@createSubTeacher')->name('create-teacher');
+    Route::post('/create-teacher', 'FormTeacherController@storeSubTeacher')->name('store-teacher');
+    Route::delete('/teacher/{id}', 'FormTeacherController@deleteSubTeacher')->name('delete-teacher');
+
+    Route::get('/course', 'FormTeacherController@indexCourse')->name('course-list');
+    Route::get('/create-course', 'FormTeacherController@createCourse')->name('create-course');
+    Route::post('/create-course', 'FormTeacherController@storeCourse')->name('store-course');
+    Route::delete('/course/{id}', 'FormTeacherController@deleteCourse')->name('delete-course');
+});
+
 Route::get('/sub-teacher', 'SubTeacherController@index')->name('subTeacher');
 Route::get('/student', 'StudentController@index')->name('student');
 

@@ -185,8 +185,20 @@ body {
 /* Main content */
 
 .main-content {
-  margin-left: 310px;
-  margin-top: 10px;
+  margin-left: 300px;
+  padding: 20px 30px;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.table-header .title {
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .authentication-pages {
