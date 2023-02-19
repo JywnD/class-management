@@ -43,6 +43,12 @@ Route::prefix('sub-teacher')->group(function () {
     Route::get('/course-detail/{id}', 'SubTeacherController@detailCourse')->name('teacher.course-detail');
 });
 
-Route::get('/student', 'StudentController@index')->name('student');
+Route::prefix('student')->group(function () {
+    Route::get('/', 'StudentController@index')->name('student');
+    Route::post('/register-course', 'StudentController@registerCourse')->name('student.register-course');
+    Route::get('/course-detail/{courseId}', 'StudentController@courseDetail')->name('student.course-detail');
+    Route::get('/courses', 'StudentController@showCourses')->name('student.courses');
+    Route::get('/marks', 'StudentController@showMarks')->name('student.marks');
+});
 
 Auth::routes();

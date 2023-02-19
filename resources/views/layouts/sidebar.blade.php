@@ -9,12 +9,13 @@
         </ul>
       @elseif (Auth::user()->hasRole('administrator'))
         <ul>
-          <li><a href="#" class="nav-link active"><i class="bx bx-home"></i> <span>Courses</span></a></li>
+          <li><a href="/sub-teacher" class="nav-link active"><i class="bx bx-home"></i> <span>Courses</span></a></li>
         </ul>
       @else
         <ul>
-          <li><a href="#" class="nav-link active"><i class="bx bx-home"></i> <span>Register Classes</span></a></li>
-          <li><a href="#" class="nav-link"><i class="bx bx-user"></i> <span>Marks</span></a></li>
+          <li><a href="/student" class="nav-link {{ Request::path() == 'student' ? 'active' : '' }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><span>Register courses</span></a></li>
+          <li><a href="/student/courses" class="nav-link {{ Request::path() == 'student/courses' ? 'active' : '' }}"><i class="fa fa-book" aria-hidden="true"></i></i> <span>Courses</span></a></li>
+          <li><a href="/student/marks" class="nav-link {{ Request::path() == 'student/marks' ? 'active' : '' }}"><i class="fa fa-bar-chart" aria-hidden="true"></i><span>Marks</span></a></li>
         </ul>
       @endif
     </nav>
