@@ -38,7 +38,11 @@ Route::prefix('form-teacher')->group(function () {
     Route::delete('/course/{id}', 'FormTeacherController@deleteCourse')->name('delete-course');
 });
 
-Route::get('/sub-teacher', 'SubTeacherController@index')->name('subTeacher');
+Route::prefix('sub-teacher')->group(function () {
+    Route::get('/', 'SubTeacherController@index')->name('teacher.courses');
+    Route::get('/course-detail/{id}', 'SubTeacherController@detailCourse')->name('teacher.course-detail');
+});
+
 Route::get('/student', 'StudentController@index')->name('student');
 
 Auth::routes();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Course;
+use Illuminate\Support\Facades\Auth;
 
 class SubTeacherController extends Controller
 {
@@ -13,6 +15,15 @@ class SubTeacherController extends Controller
 
     public function index()
     {
-        return view('sub-teacher.index');
+        $courses = Course::where('teacher_id', Auth::user()->id)->get();
+
+        return view('sub-teacher.index', compact('courses'));
+    }
+
+    public function detailCourse($id)
+    {
+        $courseInfo = Course::find($id);
+
+        return view('sub-teacher.detail_course', compact('courseInfo'));
     }
 }

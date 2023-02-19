@@ -30,8 +30,9 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="custom-container">
                 <a class="navbar-brand">
+                    <img src="{{ asset('images/bkhn_logo.png') }}" alt="logo" class="logo-app">
                     {{ config('app.name', 'Class Management') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
