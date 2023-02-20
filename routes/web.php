@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        if (Auth::user()->hasRole('superadministrator')) {
+            return redirect('/form-teacher');
+        }
+
+        if (Auth::user()->hasRole('administrator')) {
+            return redirect('/sub-teacher');
+        }
+
+        if (Auth::user()->hasRole('user')) {
+            return redirect('/student');
+        }
+    } else {
+        return view('auth.login');
+    }
 });
 
 Auth::routes();

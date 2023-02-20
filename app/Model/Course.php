@@ -12,7 +12,8 @@ class Course extends Model
         'detail',
         'start_date',
         'end_date',
-        'teacher_id'
+        'teacher_id',
+        'code'
     ];
 
     public function students()

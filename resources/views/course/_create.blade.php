@@ -12,6 +12,10 @@
         <form wire:submit.prevent action="{{ route('store-course') }}" method="POST">
           @csrf
           <div class="form-group">
+            <label for="courseName">Code</label>
+            <input type="text" class="form-control" id="courseCode" name='code' placeholder="Course's code">
+          </div>
+          <div class="form-group">
             <label for="courseName">Name</label>
             <input type="text" class="form-control" id="courseName" name='name' placeholder="Course's name">
           </div>

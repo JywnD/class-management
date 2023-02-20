@@ -39,6 +39,8 @@ class FormTeacherController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'date_of_birth' => $request->dateOfBirth,
+                'code' => $request->code,
             ]);
             $user->attachRole('user');
 
@@ -119,6 +121,7 @@ class FormTeacherController extends Controller
     {
         if ($this->validateCourseInfo($request->all())) {
             Course::create([
+                'code' => $request->code,
                 'name' => $request->name,
                 'detail' => $request->detail,
                 'teacher_id' => (int)$request->teacher,
@@ -142,7 +145,7 @@ class FormTeacherController extends Controller
 
     public function validateCourseInfo($course)
     {
-        if (!$course['name'] || !$course['teacher'] || !$course['startDate'] || !$course['endDate']) {
+        if (!$course['name'] || !$course['teacher'] || !$course['startDate'] || !$course['endDate'] || !$course['code']) {
             return false;
         } else if ($course['startDate'] >= $course['endDate']) {
             return false;

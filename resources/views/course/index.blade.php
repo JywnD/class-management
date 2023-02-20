@@ -16,7 +16,8 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Code</th>
                     <th scope="col">Name</th>
                     <th scope="col">Teacher in charge</th>
                     <th scope="col">Start date</th>
@@ -28,6 +29,7 @@
                     @foreach ($courses as $course)
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
+                            <th>{{ $course->code }}</th>
                             <td>{{ $course->name }}</td>
                             <td>{{ $course->teacher->name }}</td>
                             <td>{{ $course->start_date }}</td>
