@@ -42,7 +42,7 @@ class FormTeacherController extends Controller
             ]);
             $user->attachRole('user');
 
-            return redirect()->route('student-list');
+            return redirect()->route('student-list')->with('success', 'Create student successfully!');
         } else {
             return redirect()->back()->with('error', 'Create failure!');
         }
@@ -64,7 +64,7 @@ class FormTeacherController extends Controller
                 $q->where('name', 'administrator');
             }
         )->get();
-        return view('sub-teacher.index', compact('subTeachers'));
+        return view('form-teacher.teacher', compact('subTeachers'));
     }
 
     public function createSubTeacher()
@@ -82,7 +82,7 @@ class FormTeacherController extends Controller
             ]);
             $user->attachRole('administrator');
 
-            return redirect()->route('teacher-list');
+            return redirect()->route('teacher-list')->with('success', 'Create teacher successfully!');
         } else {
             return redirect()->back()->with('error', 'Create failure!');
         }
@@ -126,9 +126,6 @@ class FormTeacherController extends Controller
                 'end_date' => $request->endDate,
             ]);
 
-            // DB::table('course_student')->insert(
-            //     ['student_id' => $request->teacher, 'course_id' => $newCourse->id]
-            // );
             return redirect()->back()->with('success', 'Create course success!');
         } else {
             return redirect()->back()->with('error', 'Create failure!');
