@@ -41,6 +41,7 @@ Route::prefix('form-teacher')->group(function () {
 Route::prefix('sub-teacher')->group(function () {
     Route::get('/', 'SubTeacherController@index')->name('teacher.courses');
     Route::get('/course-detail/{id}', 'SubTeacherController@detailCourse')->name('teacher.course-detail');
+    Route::post('/edit-course', 'SubTeacherController@editCourse')->name('teacher.edit-course');
 });
 
 Route::prefix('student')->group(function () {
